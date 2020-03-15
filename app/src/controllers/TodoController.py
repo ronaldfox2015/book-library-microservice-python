@@ -28,6 +28,7 @@ def get_all():
   all_args = request.args
   todos = TodoModel.get_all_todos(all_args)
   data = todo_schema.dump(todos, many=True).data
+  print(data)
   return custom_response(data, 200)
 
 @todo_api.route('/<int:todo_id>', methods=['GET'])

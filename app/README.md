@@ -83,6 +83,7 @@ You can create the tables using the following set of commands
 
 ```bash
 python manage.py db init
+python manage.py db stamp head
 python manage.py db migrate
 python manage.py db upgrade
 ```

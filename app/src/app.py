@@ -3,10 +3,10 @@
 from flask import Flask
 
 from .config import app_config
-from .models import db, bcrypt
+from .infraestructure.repository.mysql import db, bcrypt
 
 # import user_api blueprint
-from .controllers.TodoController import todo_api
+from .interface.rest.home_controller import home_api
 
 
 def create_app(env_name):
@@ -23,7 +23,7 @@ def create_app(env_name):
   bcrypt.init_app(app)
   db.init_app(app)
 
-  app.register_blueprint(todo_api, url_prefix='/api/v1/todos')
+  app.register_blueprint(home_api, url_prefix='/v1/book-house')
 
   @app.route('/', methods=['GET'])
   def index():

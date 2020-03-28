@@ -27,7 +27,7 @@ def get_all():
   """
   all_args = request.args
   todos = TodoModel.get_all_todos(all_args)
-  data = todo_schema.dump(todos, many=True).data
+  data = todo_schema.dump(todos, many=True)
   print(data)
   return custom_response(data, 200)
 
@@ -39,7 +39,7 @@ def get_one(todo_id):
   post = TodoModel.get_one_todo(todo_id)
   if not post:
     return custom_response({'error': 'post not found'}, 404)
-  data = todo_schema.dump(post).data
+  data = todo_schema.dump(post)
   return custom_response(data, 200)
 
 @todo_api.route('/<int:todo_id>', methods=['PUT'])
